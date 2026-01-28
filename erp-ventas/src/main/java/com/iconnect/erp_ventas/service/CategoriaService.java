@@ -1,6 +1,6 @@
 package com.iconnect.erp_ventas.service;
 
-import com.iconnect.erp_ventas.domain.Categoria;
+import com.iconnect.erp_ventas.domain.finanzas.Categoria;
 import com.iconnect.erp_ventas.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 

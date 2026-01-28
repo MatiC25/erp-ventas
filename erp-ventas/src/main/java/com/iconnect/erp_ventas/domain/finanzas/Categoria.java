@@ -1,16 +1,21 @@
-package com.iconnect.erp_ventas.domain;
+package com.iconnect.erp_ventas.domain.finanzas;
 
+import com.iconnect.erp_ventas.domain.core.TipoOperacion;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
 import java.util.UUID;
 
 
 @Entity
-@Table(name = "categoria")
+@Table(name = "categorias")
 @Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Categoria {
 
     @Id
@@ -21,8 +26,9 @@ public class Categoria {
     @Column(unique = true)
     private String nombre;
 
+    @Enumerated(EnumType.STRING)
     @NotNull
-    private String tipoAsociado; // INGRESO, EGRESO, TRANSFERENCIA
+    private TipoOperacion tipoAsociado; // INGRESO, EGRESO, TRANSFERENCIA
 
     private boolean activa = true;
 

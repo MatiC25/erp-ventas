@@ -1,6 +1,6 @@
 package com.iconnect.erp_ventas.views;
 
-import com.iconnect.erp_ventas.domain.Categoria;
+import com.iconnect.erp_ventas.domain.finanzas.Categoria;
 import com.iconnect.erp_ventas.service.CategoriaService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -12,7 +12,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
-@Route("categoria")
+@Route(value = "categoria", layout = MainLayout.class)
 public class CategoriaView extends VerticalLayout {
 
     private final CategoriaService categoriaService;
@@ -54,7 +54,7 @@ public class CategoriaView extends VerticalLayout {
             try {
                 Categoria nueva = new Categoria();
                 nueva.setNombre(nombre.getValue());
-                nueva.setTipoAsociado(tipoPrueba.getValue());
+                //nueva.setTipoAsociado(tipoPrueba.getValue());
                 nueva.setActiva(true);
 
                 categoriaService.save(nueva);
