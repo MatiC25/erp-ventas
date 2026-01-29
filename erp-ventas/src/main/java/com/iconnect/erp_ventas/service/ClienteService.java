@@ -20,4 +20,8 @@ public class ClienteService {
     public List<Cliente> findAll() {
         return clienteRepository.findAll();
     }
+
+    public Cliente save(Cliente cliente) {
+        return clienteRepository.save(cliente);
+    }
 }

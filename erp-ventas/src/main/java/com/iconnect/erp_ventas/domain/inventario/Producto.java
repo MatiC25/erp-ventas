@@ -18,7 +18,6 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String descripcion;
 
     @ManyToOne
     @JoinColumn(name="id_cate_dispositivo")
@@ -32,9 +31,19 @@ public class Producto {
 
     //private String imagen;
 
-    private Long UPC;
+    @Column(unique = true)
+    private String UPC;
 
     @Enumerated(EnumType.STRING)
     private EstadoDispositivo estado;
+
+    public String getDescripcionCompleta() {
+        return String.format("%s %s %s %s",
+                categoriaDispositivo != null ? categoriaDispositivo.getNombre() : "",
+                modelo,
+                variante,
+                color
+        ).trim();
+    }
 
 }

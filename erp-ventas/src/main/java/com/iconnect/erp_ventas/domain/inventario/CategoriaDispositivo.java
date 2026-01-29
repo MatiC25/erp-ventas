@@ -15,6 +15,7 @@ public class CategoriaDispositivo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String nombre;
 
 }

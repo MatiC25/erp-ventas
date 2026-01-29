@@ -1,6 +1,7 @@
 package com.iconnect.erp_ventas.views;
 
 
+import com.iconnect.erp_ventas.views.ventas.NuevaVentaView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;

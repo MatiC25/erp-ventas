@@ -5,6 +5,7 @@ import com.iconnect.erp_ventas.repository.ProductoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoService {
@@ -17,5 +18,9 @@ public class ProductoService {
 
     public List<Producto> findAll() {
         return productoRepository.findAll();
+    }
+
+    public Optional<Producto> buscarProductoPorUPC(String UPC){
+        return productoRepository.findByUPC(UPC);
     }
 }
