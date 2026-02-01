@@ -1,15 +1,17 @@
 package com.iconnect.erp_ventas.views.ventas;
 
 import com.iconnect.erp_ventas.domain.usuarios.Cliente;
-import com.iconnect.erp_ventas.repository.ClienteRepository; // <--- Importante
+import com.iconnect.erp_ventas.repository.ModeloRepository;
+import com.iconnect.erp_ventas.service.CajaService;
 import com.iconnect.erp_ventas.service.ClienteService;
 import com.iconnect.erp_ventas.service.ProductoService;
 import com.iconnect.erp_ventas.service.VentaService;
 import com.iconnect.erp_ventas.views.MainLayout;
-import com.iconnect.erp_ventas.views.ventas.components.DatosCliente;
-import com.iconnect.erp_ventas.views.ventas.components.DatosProducto;
+import com.iconnect.erp_ventas.views.ventas.components.SeccionProductos;
+import com.iconnect.erp_ventas.views.ventas.components.formularios.DatosCliente;
+import com.iconnect.erp_ventas.views.ventas.components.formularios.DatosPago;
+import com.iconnect.erp_ventas.views.ventas.components.formularios.DatosTradeIn;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -20,28 +22,36 @@ import com.vaadin.flow.router.Route;
 @Route(value = "nueva-venta", layout = MainLayout.class)
 public class NuevaVentaView extends VerticalLayout {
 
-    // Servicios necesarios
+
     private final VentaService ventaService;
     private final ClienteService clienteService;
     private final ProductoService productoService;
+    private final CajaService cajaService;
+    private final ModeloRepository modeloRepository;
 
-    // --- NUESTROS COMPONENTES HIJOS ---
-    // Aquí irán apareciendo los demás (Carrito, Pagos, etc.) a medida que los limpies.
+
     private DatosCliente datosCliente;
-    private DatosProducto datosProducto;
+    private DatosPago datosPago;
+    private DatosTradeIn datosTradeIn;
+    private SeccionProductos seccionProductos;
 
     public NuevaVentaView(VentaService ventaService,
                           ClienteService clienteService,
-                            ProductoService productoService) {
+                            ProductoService productoService,
+                          CajaService cajaService,
+                          ModeloRepository modeloRepository) {
         this.ventaService = ventaService;
         this.clienteService = clienteService;
         this.productoService = productoService;
+        this.cajaService = cajaService;
+        this.modeloRepository = modeloRepository;
 
         setSizeFull();
 
         this.datosCliente = new DatosCliente(clienteService);
-        this.datosProducto = new DatosProducto(productoService);
-
+        this.datosPago = new DatosPago(cajaService);
+        this.datosTradeIn = new DatosTradeIn();
+        this.seccionProductos = new SeccionProductos(productoService, modeloRepository);
 
         buildLayout();
     }
@@ -52,11 +62,7 @@ public class NuevaVentaView extends VerticalLayout {
 
         // Separador visual (Línea horizontal)
         add(new Hr());
-
-        // AQUI ESTÁ TU FORMULARIO LIMPIO ✨
-        add(datosCliente, datosProducto);
-
-        // Separador para cuando pongas lo siguiente
+        add(seccionProductos);
         add(new Hr());
 
         // Botón temporal solo para que veas que funciona la integración

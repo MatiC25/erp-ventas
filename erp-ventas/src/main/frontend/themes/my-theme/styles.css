@@ -1,0 +1,14 @@
+/* 1. Tailwind: siempre primero */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. Customizaciones Vaadin */
+.vaadin-field-container {
+    @apply gap-4;
+}
+
+/* 3. Variables Lumo */
+:root {
+    --lumo-primary-color: #0066ff;
+}

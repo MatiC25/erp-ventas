@@ -20,10 +20,9 @@ public class Producto {
 
 
     @ManyToOne
-    @JoinColumn(name="id_cate_dispositivo")
-    private CategoriaDispositivo categoriaDispositivo;
+    @JoinColumn(name = "modelo_id")
+    private Modelo modelo;
 
-    private String modelo;
 
     private String variante;
 
@@ -39,8 +38,8 @@ public class Producto {
 
     public String getDescripcionCompleta() {
         return String.format("%s %s %s %s",
-                categoriaDispositivo != null ? categoriaDispositivo.getNombre() : "",
-                modelo,
+                modelo.getCategoriaDispositivo() != null ? modelo.getCategoriaDispositivo() : "",
+                modelo.getNombre(),
                 variante,
                 color
         ).trim();

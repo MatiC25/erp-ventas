@@ -41,7 +41,7 @@ public class NuevaVentaTest {
         // Creamos un producto
         Producto iphone = Producto.builder()
                 .id(1L)
-                .modelo("16 Pro")
+                //.modelo("16 Pro")
                 .variante("256GB")
                 .build();
 

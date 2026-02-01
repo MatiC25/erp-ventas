@@ -1,4 +1,4 @@
-package com.iconnect.erp_ventas.views.ventas.components;
+package com.iconnect.erp_ventas.views.ventas.components.formularios;
 
 import com.iconnect.erp_ventas.domain.core.CanalVenta;
 import com.iconnect.erp_ventas.domain.usuarios.Cliente;
